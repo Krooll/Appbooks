@@ -3,37 +3,60 @@
 
   const select = {
     templateOf: {
-        book: '#template-book',
+      book: '#template-book',
     },
 
     containerOf: {
-        bookList: '#books-list',
+      bookList: '.books-list',
     },
 
-    book: {
-        name: '.book_name',
-        price: '.book_price',
-        rating: '.book_rating',
-        cover: '.book_image',
-    }
+    books: {
+      name: '.book__name',
+      img: '.book__image',
+      form: '.filters'
+    },
+
   };
 
   const templates = {
     bookLists: Handlebars.compile(document.querySelector(select.templateOf.book).innerHTML),
   };
 
-  console.log('name', select.book.name);
+  
 
   class Books{
     constructor(){
-        const thisBook = this;
+      const thisBook = this;
 
-        thisBook.getElements();
+      thisBook.getElements();
+      thisBook.render();
     }
 
     getElements(){
-        const thisBook = this; 
+      const thisBook = this; 
 
+      thisBook.container = document.querySelector(select.containerOf.bookList);
+      //console.log('thisbookcontainer', thisBook.container);
+      thisBook.name = document.querySelector(select.books.name);
+      //console.log('thisbookname', thisBook.name);
+      thisBook.img = document.querySelector(select.books.img);
+      //console.log('thisbookimg', thisBook.img);
+      thisBook.form = document.querySelector(select.books.form);
+      //console.log('thisbookform', thisBook.form);
+    }
+
+    render(){
+      const thisBook = this;
+
+      for(let bookId of dataSource.books){
+        
+        const generatedHTML = templates.bookLists(bookId);
+
+        const generatedDom = utils.createDOMFromHTML(generatedHTML); 
+
+        thisBook.container.appendChild(generatedDom);
+
+      }
     }
 
   }
