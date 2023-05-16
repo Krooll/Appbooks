@@ -10,12 +10,6 @@
       bookList: '.books-list',
     },
 
-    books: {
-      name: '.book__name',
-      img: '.book__image',
-      form: '.filters'
-    },
-
   };
 
   const templates = {
@@ -36,13 +30,7 @@
       const thisBook = this; 
 
       thisBook.container = document.querySelector(select.containerOf.bookList);
-      //console.log('thisbookcontainer', thisBook.container);
-      thisBook.name = document.querySelector(select.books.name);
-      //console.log('thisbookname', thisBook.name);
-      thisBook.img = document.querySelector(select.books.img);
-      //console.log('thisbookimg', thisBook.img);
-      thisBook.form = document.querySelector(select.books.form);
-      //console.log('thisbookform', thisBook.form);
+      
     }
 
     render(){
@@ -52,9 +40,9 @@
         
         const generatedHTML = templates.bookLists(bookId);
 
-        const generatedDom = utils.createDOMFromHTML(generatedHTML); 
+        const generatedDOM = utils.createDOMFromHTML(generatedHTML); 
 
-        thisBook.container.appendChild(generatedDom);
+        thisBook.container.appendChild(generatedDOM);
 
       }
     }
