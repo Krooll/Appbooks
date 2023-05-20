@@ -20,7 +20,7 @@
     bookLists: Handlebars.compile(document.querySelector(select.templateOf.book).innerHTML),
   };
 
-  
+  const favoriteBooks = [];
 
   class Books{
     constructor(){
@@ -35,8 +35,7 @@
       const thisBook = this; 
 
       thisBook.container = document.querySelector(select.containerOf.bookList);
-      thisBook.images = thisBook.container.querySelectorAll(select.book.image);
-      console.log('images',thisBook.images);
+      
     }
 
     render(){
@@ -56,19 +55,20 @@
     initActions(){
       const thisBook = this;
 
-      const favoriteBooks = [];
-
-      for(let imageId of thisBook.images){
+      thisBook.images = thisBook.container.querySelectorAll(select.book.image);
+      console.log('images',thisBook.images);
+      for(const imageId of thisBook.images){
         imageId.addEventListener('dblclick', function(event){
+          console.log(event);
           event.preventDefault();
           imageId.classList.add('favorite');
           const id = imageId.getAttribute('data-id');
           favoriteBooks.push(id);
         });
-      }
 
       console.log('favorite',favoriteBooks);
       return favoriteBooks;
+      }
     }
 
   }
