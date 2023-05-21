@@ -71,7 +71,6 @@
           }
         });
       }
-
       return favoriteBooks;
       
     }
