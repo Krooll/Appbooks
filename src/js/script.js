@@ -23,7 +23,7 @@
 
   const favoriteBooks = [];
 
-  const filters=[];
+  //const filters=[];
 
   class Books{
     constructor(){
@@ -60,29 +60,29 @@
       for(let imgId of thisBook.images){
         const img = imgId;
   
-      img.addEventListener('dblclick',function(event){
-        event.preventDefault();
-        if (event.target.offsetParent.classList.contains('book__image')){
-          const bookId = event.target.offsetParent.getAttribute('data-id');
-          console.log(bookId);
-          if (bookId == favoriteBooks){
-            img.classList.remove('favorite');
-            favoriteBooks.pop(bookId);
+        img.addEventListener('dblclick',function(event){
+          event.preventDefault();
+          if (event.target.offsetParent.classList.contains('book__image')){
+            const bookId = event.target.offsetParent.getAttribute('data-id');
+            console.log(bookId);
+            if (bookId == favoriteBooks){
+              img.classList.remove('favorite');
+              favoriteBooks.pop(bookId);
+            }
+            else {
+              img.classList.add('favorite');
+              favoriteBooks.push(bookId);
+            } 
           }
-          else {
-            img.classList.add('favorite');
-            favoriteBooks.push(bookId);
-          }
-        }
-        console.log('fav', favoriteBooks);
-        return favoriteBooks;
-      });
+          console.log('fav', favoriteBooks);
+          return favoriteBooks;
+        });
 
-    }
+      }
 
-    thisBook.filters.addEventListener('click', function(){
+      thisBook.filters.addEventListener('click', function(){
       
-    });
+      });
     }
   }
 
