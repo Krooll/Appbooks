@@ -23,7 +23,7 @@
 
   const favoriteBooks = [];
 
-  //const filters=[];
+  const filters=[];
 
   class Books{
     constructor(){
@@ -80,9 +80,31 @@
 
       }
 
-      thisBook.filters.addEventListener('click', function(){
-      
+      thisBook.filters.addEventListener('click', function(event){
+        const filter = event.target;
+        const checked = filter.checked;
+
+        if(filter.tagName == 'INPUT' && filter.type == 'checkbox' && filter.name == 'filter'){
+          if(!checked){
+            filters.pop(filter.value);
+          }else if (checked){
+            filters.push(filter.value);
+          }
+        }
       });
+    }
+
+    filterBooks(){
+      const thisBook = this; 
+
+      for(const book of dataSource.books){
+        let shouldBeHidden = false; 
+        for(const filter of filters){
+          if(!book.details[filter]){
+            
+          }
+        }
+      }
     }
   }
 
