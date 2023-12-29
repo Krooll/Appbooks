@@ -57,3 +57,5 @@ dataSource.books = [
     }
   },
 ];
+
+export default dataSource;
